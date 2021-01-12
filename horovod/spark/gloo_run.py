@@ -59,6 +59,11 @@ def gloo_run(settings, nics, driver, env):
                codec.dumps_base64(driver.addresses()),
                codec.dumps_base64(settings))
 
+    print("*** horovod.spark.gloo_run: env - line 62")
+    print(dict(env))
+    print("*** horovod.spark.gloo_run: command[0] (sys.executable) - line 64")
+    print(command[0])
+
     exec_command = _exec_command_fn(driver, key, settings, env)
     launch_gloo(command, exec_command, settings, nics, {}, server_ip)
 
