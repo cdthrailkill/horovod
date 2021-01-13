@@ -54,7 +54,7 @@ def gloo_run(settings, nics, driver, env):
     # threads will keep running and ssh session.
     iface = list(nics)[0]
     server_ip = driver.addresses()[iface][0][0]
-    sys_executable = env['PYSPARK_PYTHON'] or sys.executable
+    sys_executable = "./__venv__/bin/python" #env.get('PYSPARK_PYTHON', None) or sys.executable
     command = (sys_executable,
                '-m', 'horovod.spark.task.gloo_exec_fn',
                codec.dumps_base64(driver.addresses()),
