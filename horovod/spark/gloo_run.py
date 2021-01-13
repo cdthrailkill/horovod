@@ -61,7 +61,8 @@ def gloo_run(settings, nics, driver, env):
                codec.dumps_base64(settings))
 
     exec_command = _exec_command_fn(driver, key, settings, env)
-    launch_gloo(command, exec_command, settings, nics, {}, server_ip)
+    #launch_gloo(command, exec_command, settings, nics, {}, server_ip)
+    launch_gloo(command, exec_command, settings, nics, env, server_ip)
 
 
 def gloo_run_elastic(settings, driver, env):

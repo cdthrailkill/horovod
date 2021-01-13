@@ -23,7 +23,7 @@ import torch
 from pytorch_lightning import Trainer, Callback
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger
-
+"""
 from pyspark import SparkFiles
 from subprocess import check_call
 import sys
@@ -34,7 +34,7 @@ except ModuleNotFoundError:
     check_call([sys.executable, '-m', 'pip', 'install', '-t', SparkFiles.getRootDirectory(), 'petastorm>=0.9.0,!=0.9.3'])
     from petastorm import TransformSpec, make_reader, make_batch_reader
     from petastorm.pytorch import BatchedDataLoader
-
+"""
 from horovod.spark.common import constants
 from horovod.spark.common.util import _get_assigned_gpu_or_default, to_list
 from horovod.spark.common.store import DBFSLocalStore
@@ -151,7 +151,7 @@ def _make_callbacks():
 def _make_petastorm_reader_fn(transformation, schema_fields, batch_size, calculate_shuffle_buffer_size, dataloader_cls):
     @contextlib.contextmanager
     def make_petastorm_reader(trainer, model, data_path, dataloader_attr, reader_worker_count, should_read=True):
-        #from petastorm import TransformSpec, make_reader, make_batch_reader
+        from petastorm import TransformSpec, make_reader, make_batch_reader
         import horovod.torch as hvd
 
         if not should_read or trainer.is_overridden(dataloader_attr, model):
@@ -242,7 +242,7 @@ def _calculate_shuffle_buffer_size_fn(train_rows, avg_row_size, user_shuffle_buf
 
 
 def _create_dataloader(input_shapes, metadata):
-    #from petastorm.pytorch import BatchedDataLoader
+    from petastorm.pytorch import BatchedDataLoader
 
     prepare_data = _prepare_data_fn(metadata)
 
