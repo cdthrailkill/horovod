@@ -68,8 +68,6 @@ class SparkBackend(Backend):
         self._kwargs = kwargs
 
     def run(self, fn, args=(), kwargs={}, env=None):
-        print("*** SparkBackend: self._env - line 71")
-        print(dict(self._env))
         full_env = self._env or os.environ.copy()
         if env:
             full_env.update(env)
@@ -81,8 +79,7 @@ class SparkBackend(Backend):
             # the device so we can use them for training, which is why we need to unset this.
             # See https://github.com/tensorflow/tensorflow/issues/33168
             del full_env['CUDA_VISIBLE_DEVICES']
-        print("*** SparkBackend: full_env - line 83")
-        print(dict(full_env))
+
         return horovod.spark.run(fn, args=args, kwargs=kwargs,
                                  num_proc=self._num_proc, env=full_env,
                                  **self._kwargs)

@@ -238,9 +238,6 @@ def launch_gloo(command, exec_command, settings, nics, env, server_ip):
     rendezvous.init(host_alloc_plan)
     run_command = get_run_command(command, server_ip, nics, global_rendezv_port)
 
-    print("*** horovod.runner.gloo_run: env - line 241")
-    print(dict(env))
-
     slot_info_to_command = _slot_info_to_command_fn(run_command, env)
     event = register_shutdown_event()
     args_list = [[slot_info_to_command(slot_info), slot_info, [event]]

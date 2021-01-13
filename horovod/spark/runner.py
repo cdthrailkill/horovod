@@ -278,8 +278,6 @@ def run(fn, args=(), kwargs={}, num_proc=None, start_timeout=None,
                                   for host_hash in host_hashes)
 
         # Run the job
-        print("*** horovod.spark.runner: env - line 281")
-        print(dict(env))
         _launch_job(use_mpi, use_gloo, settings, driver, env, stdout, stderr)
     except:
         # Terminate Spark job.
