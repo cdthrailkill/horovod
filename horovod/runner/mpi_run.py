@@ -211,7 +211,13 @@ def mpi_run(settings, nics, env, command, stdout=None, stderr=None):
 
     # Execute the mpirun command.
     if settings.run_func_mode:
+        print("*** MPIRUN COMMAND ***")
+        print(mpirun_command)
+        print("**********************")
         exit_code = safe_shell_exec.execute(mpirun_command, env=env, stdout=stdout, stderr=stderr)
+        print("*** MPIRUN COMMAND EXIT CODE ***")
+        print(exit_code)
+        print("********************************")
         if exit_code != 0:
             raise RuntimeError("mpirun failed with exit code {exit_code}".format(exit_code=exit_code))
     else:
