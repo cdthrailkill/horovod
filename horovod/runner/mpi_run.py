@@ -218,6 +218,12 @@ def mpi_run(settings, nics, env, command, stdout=None, stderr=None):
         print("*** MPIRUN COMMAND EXIT CODE ***")
         print(exit_code)
         print("********************************")
+        print("*** MPIRUN COMMAND STDOUT ***")
+        print(stdout)
+        print("*****************************")
+        print("*** MPIRUN COMMAND STDERR ***")
+        print(stderr)
+        print("*****************************")
         if exit_code != 0:
             raise RuntimeError("mpirun failed with exit code {exit_code}".format(exit_code=exit_code))
     else:
