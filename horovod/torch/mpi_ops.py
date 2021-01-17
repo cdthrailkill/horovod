@@ -641,6 +641,12 @@ def join(device=-1):
         Id of the rank that joined last.
     """
     try:
+        print("*** horovod.torch.mpi_ops.py.join - variable 'device' value: ***")
+        print(device)
+        print("****************************************************************")
         return mpi_lib.horovod_torch_join(device)
     except RuntimeError as e:
+        print("*** horovod.torch.mpi_ops.py.join - RuntimeError 'e' value: ***")
+        print(e)
+        print("***************************************************************")
         raise HorovodInternalError(e)
