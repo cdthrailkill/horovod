@@ -106,7 +106,7 @@ def RemoteTrainer(estimator, metadata, ckpt_bytes, run_id, dataset_idx, train_ro
                               logger=logger,
                               checkpoint_callback=checkpoint_callback,
                               resume_from_checkpoint=last_ckpt_file if ckpt_bytes else None)
-            print("*** train_reader_worker_count: "+train_reader_worker_count, file=sys.stderr)
+            print("*** train_reader_worker_count: ", file=sys.stderr)
             print(train_reader_worker_count, file=sys.stderr)
             with make_petastorm_reader(trainer, model, remote_store.train_data_path, 'train_dataloader',
                                        train_reader_worker_count), \
