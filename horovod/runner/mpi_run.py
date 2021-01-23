@@ -172,7 +172,7 @@ def mpi_run(settings, nics, env, command, stdout=None, stderr=None):
 
     # Pass all the env variables to the mpirun command.
     mpirun_command = (
-        'JAVA_OPTS=-Xmx61440m mpirun --allow-run-as-root --tag-output '
+        '_JAVA_OPTIONS=-Xmx61440m mpirun --allow-run-as-root --tag-output '
         '-np {num_proc} {hosts_arg} '
         '{binding_args} '
         '{mpi_args} '
