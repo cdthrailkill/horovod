@@ -90,6 +90,8 @@ def RemoteTrainer(estimator, metadata, ckpt_bytes, run_id, dataset_idx, train_ro
                     f.write(ckpt_bytes)
 
             logs_path = os.path.join(run_output_dir, remote_store.logs_subdir)
+            print("**LOG PATH**")
+            print(logs_path)
             logger = TensorBoardLogger(logs_path)
 
             ckpt_path = os.path.join(run_output_dir, remote_store.checkpoint_filename)
