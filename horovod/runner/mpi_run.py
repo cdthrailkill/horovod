@@ -172,7 +172,7 @@ def mpi_run(settings, nics, env, command, stdout=None, stderr=None):
 
     # Pass all the env variables to the mpirun command.
     mpirun_command = (
-        '_JAVA_OPTIONS=-Xmx61440m JAVA_OPTS=-Xmx61440m mpirun --allow-run-as-root --tag-output '
+        'mpirun --allow-run-as-root --tag-output '
         '-np {num_proc} {hosts_arg} '
         '{binding_args} '
         '{mpi_args} '
@@ -211,19 +211,7 @@ def mpi_run(settings, nics, env, command, stdout=None, stderr=None):
 
     # Execute the mpirun command.
     if settings.run_func_mode:
-        print("*** MPIRUN COMMAND ***")
-        print(mpirun_command)
-        print("**********************")
         exit_code = safe_shell_exec.execute(mpirun_command, env=env, stdout=stdout, stderr=stderr)
-        print("*** MPIRUN COMMAND EXIT CODE ***")
-        print(exit_code)
-        print("********************************")
-        print("*** MPIRUN COMMAND STDOUT ***")
-        print(stdout)
-        print("*****************************")
-        print("*** MPIRUN COMMAND STDERR ***")
-        print(stderr)
-        print("*****************************")
         if exit_code != 0:
             raise RuntimeError("mpirun failed with exit code {exit_code}".format(exit_code=exit_code))
     else:
