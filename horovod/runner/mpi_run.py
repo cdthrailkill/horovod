@@ -90,7 +90,9 @@ def _get_mpi_implementation(env=None):
     if res is None:
         return _MISSING_IMPL
     (output, exit_code) = res
-
+    print("** MPIRUN OUTPUT **")
+    print(exit_code)
+    print(output)
     if exit_code == 0:
         if 'Open MPI' in output or 'OpenRTE' in output:
             return _OMPI_IMPL
