@@ -93,6 +93,7 @@ def _get_mpi_implementation(env=None):
     print("** MPIRUN OUTPUT **")
     print(exit_code)
     print(output)
+    print(env)
     if exit_code == 0:
         if 'Open MPI' in output or 'OpenRTE' in output:
             return _OMPI_IMPL
