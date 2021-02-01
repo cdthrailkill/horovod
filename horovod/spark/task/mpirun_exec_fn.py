@@ -41,7 +41,10 @@ def main(driver_addresses, settings):
         if settings.verbose >= 2:
             print("Changing cwd from {} to {}".format(os.getcwd(), work_dir))
         os.chdir(work_dir)
-
+    print("** SYS.PATH **")
+    print(sys.path)
+    print("** OS.ENVIRON **")
+    print(os.environ)
     task_exec(driver_addresses, settings, 'OMPI_COMM_WORLD_RANK', 'OMPI_COMM_WORLD_LOCAL_RANK')
 
 
