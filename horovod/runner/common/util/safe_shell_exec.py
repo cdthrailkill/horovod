@@ -182,6 +182,7 @@ def execute(command, env=None, stdout=None, stderr=None, index=None, events=None
                                                           (r, w)))
     print("** SYS.MODULES **")
     print(sys.modules)
+
     middleman.start()
 
     # Close unused file descriptors to enforce PIPE behavior.
