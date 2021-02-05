@@ -239,7 +239,14 @@ def launch_gloo(command, exec_command, settings, nics, env, server_ip):
     run_command = get_run_command(command, server_ip, nics, global_rendezv_port)
 
     slot_info_to_command = _slot_info_to_command_fn(run_command, env)
-    event = register_shutdown_event()
+
+    def get_do_nothing():
+        def do_nothing(*args):
+            pass
+        return do_nothing
+
+    # event = register_shutdown_event()
+    event = get_do_nothing()
     args_list = [[slot_info_to_command(slot_info), slot_info, [event]]
                  for slot_info in host_alloc_plan]
 
